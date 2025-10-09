@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "rsvp-github-pages-template",
+			"path": "."
+		},
+		{
+			"name": "assets",
+			"path": "../../Downloads/rsvp-red-black-with-maps/assets"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "rsvp-github-pages-template"
+	}
+}
