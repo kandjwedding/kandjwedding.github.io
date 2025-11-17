@@ -363,3 +363,56 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--primary); outl
   }
 }
 
+
+#rsvp .accent {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #222;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUpElegant 1s ease forwards;
+}
+
+#rsvp .accent::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: #b8a77f; /* soft gold accent — adjust if you want */
+  margin: 0.8rem auto 1.8rem;
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+#rsvp p {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* Animation effect for smooth fade + slide-up */
+@keyframes fadeUpElegant {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rsvp-form {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUpElegant 1.2s ease forwards;
+  animation-delay: 0.4s;
+}
