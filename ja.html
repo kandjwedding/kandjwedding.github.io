@@ -44,7 +44,7 @@
       </picture>
       <div class="hero-text parallax">
         <h1>Karen & Jan</h1>
-        <p class="subtitle">Save the Date — 20 March 2026</p>
+        <p class="subtitle">Save the Date — March 20th, 2026</p>
         <a href="#rsvp" class="btn btn-primary">RSVP Now</a>
       </div>
     </div>
@@ -62,6 +62,7 @@
         <div class="grid-2">
           <div class="card" data-anim="fade-up" data-delay="100"> 
             <h3>教会</h3>
+            <p><strong>日付:</strong> 2026年3月20日</p>
             <p><strong>時間:</strong> 15:30</p>
             <p><strong>住所:</strong> Klosterpl. 6, 27711 Osterholz-Scharmbeck</p>
             <p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Klosterkirche+St.+Marien,+Klosterpl.+6,+27711+Osterholz-Scharmbeck">Googleマップ ↗</a></p>
@@ -122,7 +123,7 @@
 
     <!-- RSVP -->
     <section id="rsvp" class="section section-alt">
-        <div class="container">
+        <div class="container" data-anim="fade-up" data-delay="100">
             <h2 class="accent" data-anim="fade-up">出欠のご回答</h2>
             <p><strong>2026年1月31日</strong>までにご回答ください。アレルギーや食事制限がある場合は下にご記入ください。</p>
 
@@ -237,9 +238,33 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© <span id="year"></span> Karen & Jan</p>
+      <p>© <span id="year"></span> Karen & Jan · Built with ❤️ and GitHub Pages</p>
     </div>
   </footer>
+
+  <!-- JS -->
+  <script src="./assets/js/main.js?v=3" defer></script>
+
+  <script>
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    window.addEventListener('load', function () {
+      if (!window.location.hash || window.location.hash === '#top') {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    });
+  </script>
+
+  <!-- Floating back to top button -->
+  <button id="toTopBtn" aria-label="Back to top">↑</button>
+  <script>
+    const toTopBtn = document.getElementById('toTopBtn');
+    window.addEventListener('scroll', () => {
+      toTopBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    toTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 
   <script src="./assets/js/main.js?v=3" defer></script>
 </body>

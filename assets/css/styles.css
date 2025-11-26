@@ -466,46 +466,44 @@ h2.accent {
   text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
-/* Slider container */
+#gallery .slider {
+  width: 100%;
+  max-width: 1600px;      /* you can change this value */
+  margin: 0 auto;
+}
+
+
+/* Slider wrapper */
 .slider {
   width: 100%;
-  max-width: 950px;
-  margin: 0 auto;
   overflow: hidden;
-  border-radius: 18px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+  padding: 20px 0; /* optional spacing */
 }
 
-/* Slides wrapper — flex for horizontal layout */
+/* Slides container */
 .slides {
   display: flex;
-  gap: 16px;            /* space between images */
-  animation: slideSmooth 40s linear infinite;
+  gap: 16px;
+  flex-wrap: nowrap;
+  animation: slideLoop 20s linear infinite;
 }
 
-/* Each image — smaller width to show multiple images */
+/* Each photo */
 .slides img {
-  flex: 0 0 auto;       /* do not shrink or grow */
-  width: 300px;          /* control how many images appear */
-  height: 200px;         /* adjust as needed */
+  flex: 0 0 auto;            /* prevent shrinking */
+  width: 30%;                 /* adjust number of images visible */
+  max-width: 300px;           /* optional cap */
+  height: 200px;              /* adjust as needed */
   object-fit: cover;
   border-radius: 12px;
-  transition: transform 0.3s ease;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .slides img {
-    width: 200px;
-    height: 140px;
-  }
-}
 
-/* Smooth infinite sliding */
-@keyframes slideSmooth {
+@keyframes slideLoop {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* adjust depending on number of images */
+  100% { transform: translateX(-50%); } /* duplicates needed for smooth loop */
 }
+
 
 
 /* --- 日本語タイトル用ナチュラルフォント --- */
@@ -534,4 +532,100 @@ h1, h2, h3 {
 /* Or, if you want more control, add padding to the section */
 #gallery {
   padding: 60px 0; /* 60px top & bottom space */
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 16px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    padding: 6px 0;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
+.hero {
+  min-height: 60vh; /* smaller on phones */
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.hero-text {
+  padding: 16px;
+}
+
+.hero-text h1 {
+  font-size: clamp(2rem, 6vw, 3rem); /* smaller headings on mobile */
+}
+
+.hero-text p.subtitle {
+  font-size: clamp(1rem, 4vw, 1.2rem);
+}
+
+@media (max-width: 860px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+.slides img {
+  flex: 0 0 auto;
+  width: 45%;       /* 2 images visible on phones */
+  max-width: 200px; /* optional limit */
+  height: auto;
+}
+
+@media (max-width: 480px) {
+  .slides img {
+    width: 80%;     /* 1 image visible on very small phones */
+    max-width: none;
+  }
+}
+.rsvp-form {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 12px;
+}
+
+.rsvp-form .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.btn, .btn-primary, .btn-outline {
+  width: 100%;      /* full width on phones */
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 12px 0;
+}
+@media (max-width: 768px) {
+  .section, .section-alt {
+    padding: 40px 0; /* less than desktop 72px */
+  }
 }
