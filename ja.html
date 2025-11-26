@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="ja">
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Karen & Jan — 結婚式 & RSVP</title>
@@ -54,47 +57,12 @@
   </header>
 
   <main>
-    <!-- 1日の流れ -->
-    <section id="plan" class="section">
-      <div class="container">
-        <h2 class="accent" data-anim="fade-up">当日の流れ</h2>
-
-        <div class="card" data-anim="fade-up" data-delay="100">
-          <h3>戸籍役場での式（Standesamt）</h3>
-          <p><strong>10:45 — Standesamt Gut Sandbeck</strong></p>
-          <p>会場が小さいため、入場できるのは証人のみです。ほかの皆さまは<strong>外でお待ちいただき</strong>、式後に合流できると嬉しいです。</p>
-        </div>
-
-        <div class="card" data-anim="fade-up" data-delay="150">
-          <h3>教会式</h3>
-          <p><strong>15:30 — Klosterkirche St. Marien</strong></p>
-          <p>ご招待の皆さまは教会内にお入りいただけます。少し早めのご到着をお願いします。</p>
-        </div>
-
-        <div class="card" data-anim="fade-up" data-delay="200">
-          <h3>レセプション</h3>
-          <p><strong>18:00 — Deck 20 & Riva Clubraum（ブレーメン）</strong></p>
-          <p><strong>会場までの送迎</strong>が必要な方は、RSVPでお知らせください。乗り合わせを調整します。</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ドレスコード（別セクション） -->
-    <section id="dresscode" class="section section-alt">
-      <div class="container">
-        <h2 class="accent" data-anim="fade-up">ドレスコード</h2>
-        <div class="card" data-anim="fade-up" data-delay="100">
-          <p><strong>セミフォーマル。</strong> ワンピースやジャンプスーツ、スーツまたはシャツ＋スラックスなど。</p>
-        </div>
-      </div>
-    </section>
-
     <!-- 会場情報 -->
     <section id="details" class="section">
       <div class="container">
         <h2 class="accent" data-anim="fade-up">会場情報</h2>
 
-        <div class="grid-2" style="margin-bottom:28px">
+        <div class="grid-2">
           <div class="card" data-anim="fade-up" data-delay="100">
             <h3>戸籍役場</h3>
             <p><strong>日時:</strong> 2026/03/20 10:45</p>
@@ -107,9 +75,6 @@
             <p><strong>住所:</strong> Klosterpl. 6, 27711 Osterholz-Scharmbeck</p>
             <p><a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Klosterkirche+St.+Marien,+Klosterpl.+6,+27711+Osterholz-Scharmbeck">Googleマップ ↗</a></p>
           </div>
-        </div>
-
-        <div class="grid-2">
           <div class="card" data-anim="fade-up" data-delay="100">
             <h3>レセプション</h3>
             <p><strong>時間:</strong> 18:00</p>
@@ -120,11 +85,62 @@
       </div>
     </section>
 
+    <!-- 1日の流れ -->
+    <section id="plan" class="section section-alt">
+      <div class="container">
+        <h2 class="accent" data-anim="fade-up">当日の流れ</h2>
+
+        <div class="card" data-anim="fade-up" data-delay="100">
+          <h3>戸籍役場での式</h3>
+          <p><strong>10:45 — Standesamt Gut Sandbeck</strong></p>
+          <p>会場が小さいため、入場できるのは親族と証人のみです。ほかの皆さまは外でお待ちいただき、式後に合流できると嬉しいです。教会式からの参加でも構いません。</p>
+        </div>
+
+        <div class="card" data-anim="fade-up" data-delay="150">
+          <h3>教会</h3>
+          <p><strong>15:30 — Klosterkirche St. Marien</strong></p>
+          <p>ご招待の皆さまは教会内に早めにお入りいただけます。</p>
+        </div>
+
+        <div class="card" data-anim="fade-up" data-delay="200">
+          <h3>レセプション</h3>
+          <p><strong>18:00 — Deck 20 & Riva Clubraum</strong></p>
+          <p>会場までの送迎は乗り合わせを調整する予定です。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ドレスコード（別セクション） -->
+    <section id="dresscode" class="section">
+      <div class="container">
+        <h2 class="accent" data-anim="fade-up">ドレスコード</h2>
+        <div class="card" data-anim="fade-up" data-delay="100">
+          <p><strong>セミフォーマル</strong></p>
+          <p>ドイツの結婚式では、白と黒を避けたワンピースやジャンプスーツ、スーツまたはシャツ＋スラックスなどが好ましいとされています。</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const plusOneSelect = document.getElementById("plusone");
+        const plusOneSection = document.getElementById("plusone-section");
+
+        plusOneSelect.addEventListener("change", function () {
+          if (this.value === "はい") {
+            plusOneSection.style.display = "block";
+          } else {
+            plusOneSection.style.display = "none";
+          }
+        });
+      });
+      </script>
+
     <!-- RSVP -->
-    <section id="rsvp" class="section">
+    <section id="rsvp" class="section section-alt">
         <div class="container">
             <h2 class="accent" data-anim="fade-up">出欠のご回答</h2>
-            <p><strong>2026年1月20日</strong>までにご回答ください。アレルギーや食事制限がある場合は下にご記入ください。</p>
+            <p><strong>2026年12月31日</strong>までにご回答ください。アレルギーや食事制限がある場合は下にご記入ください。</p>
 
             <form class="rsvp-form" action="https://formsubmit.co/kar_kur@icloud.com" method="POST">
             <input type="hidden" name="_subject" value="RSVP — Karen & Jan (日本語)">
@@ -144,7 +160,6 @@
                 <option value="">選択してください</option>
                 <option value="出席します">出席します</option>
                 <option value="欠席します">欠席します</option>
-                <option value="未定">未定です</option>
                 </select>
             </div>
 
@@ -189,12 +204,8 @@
 
                 <div class="form-row">
                 <label for="plusallergies">同伴者のアレルギー・食事制限</label>
-                <input id="plusallergies" name="同伴者のアレルギー" placeholder="例：乳製品NGなど">
+                <input id="plusallergies" name="同伴者のアレルギー" placeholder="例：ナッツアレルギーなど">
                 </div>
-            </div>
-
-            <div class="form-row">
-                <label><input type="checkbox" name="送迎希望" value="はい"> レストランまで送迎を希望します</label>
             </div>
 
             <div class="form-row">
@@ -203,7 +214,7 @@
             </div>
 
             <button class="btn btn-primary" type="submit">送信する</button>
-
+<!--  
             <div class="photo-upload card" data-anim="fade-up" data-delay="150" style="margin-top:24px">
                 <h3>写真を送る</h3>
                 <p>Googleフォームから最大10枚のJPG/PNG写真をアップロードできます。</p>
@@ -214,6 +225,28 @@
             </div>
             </form>
         </div>
+-->
+        </section>
+
+        <section id="gallery" class="section‚">
+          <div class="container">
+            <div class="slider">
+              <div class="slides">
+                <img src="./images/0024.png" alt="">
+                <img src="./images/0154.png" alt="">
+                <img src="./images/0004_k.png" alt="">
+                <img src="./images/0127.png" alt="">
+                <img src="./images/0195.png" alt="">
+                <img src="./images/0048.png" alt="">
+                <img src="./images/0027.png" alt="">
+                <img src="./images/0099.png" alt="">
+                <img src="./images/0194.png" alt="">
+                <img src="./images/0048.png" alt="">
+                <img src="./images/0059.png" alt="">
+                <img src="./images/0214.png" alt="">
+              </div>
+            </div>
+          </div>
         </section>
 
   </main>
