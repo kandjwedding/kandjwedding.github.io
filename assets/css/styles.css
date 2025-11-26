@@ -512,18 +512,6 @@ h1, h2, h3 {
   font-family: "Noto Serif JP", "Kosugi Maru", "Playfair Display", serif;
 }
 
-/* RSVP フォームの文字をナチュラルに */
-.rsvp-form, 
-.rsvp-form input, 
-.rsvp-form select, 
-.rsvp-form textarea, 
-.rsvp-form label, 
-.rsvp-form p, 
-.rsvp-form h3 {
-    font-family: "Kosugi Maru", "Noto Serif JP", sans-serif;
-    color: #333;
-}
-
 /* Add space around the slider */
 #gallery .slider {
   margin: 40px 0; /* 40px top & bottom space, adjust as needed */
@@ -536,96 +524,151 @@ h1, h2, h3 {
 
 @media (max-width: 768px) {
   .nav {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;       /* keep horizontal */
+    align-items: center;
     padding: 12px 16px;
   }
 
   .nav-links {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    gap: 12px;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px;
+    flex-direction: row;       /* keep links in a row */
+    position: static;          /* no absolute menu popup */
+    gap: 18px;
+    background: transparent;   /* remove mobile background */
+    border: none;
+    box-shadow: none;
+    display: flex;             /* always visible */
+    width: auto;
   }
 
   .nav-links a {
-    font-size: 1rem;
-    padding: 6px 0;
+    font-size: 1rem;           /* readable on phones */
+    padding: 0;
   }
 
   .nav-toggle {
-    display: block;
+    display: none;             /* hide hamburger */
+  }
+
+  .dropdown-content {
+    position: absolute;        /* keep dropdown for language */
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+    min-width: 140px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    border-radius: 8px;
+    padding: 0;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
   }
 }
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
 
+/* Hero section */
 .hero {
-  min-height: 60vh; /* smaller on phones */
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: #000;
+  background: var(--surface-2); /* warm tinted background instead of black */
+  min-height: 50vh;             /* smaller on phones */
 }
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 40vh;           /* reduce vertical space */
+  }
+}
+
 
 .hero img {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: 100%;            /* fill hero height */
+  object-fit: cover;       /* cover container, crop if needed */
 }
 
+
+/* Slider wrapper */
+.slider {
+  width: 100%;
+  overflow: hidden;
+  background: var(--surface-2); /* warm tinted background */
+  padding: 12px 0; /* less padding on phones */
+}
+
+/* Slides container */
+.slides {
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap;
+  animation: slideLoop 20s linear infinite;
+}
+
+/* Each photo */
+.slides img {
+  flex: 0 0 auto;
+  width: 40%;         /* smaller width on mobile */
+  max-width: 200px;   /* optional limit */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  .slides img {
+    width: 70%;       /* 1 photo visible at a time */
+    max-width: none;
+  }
+}
+
+
 .hero-text {
-  padding: 16px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 12px;           /* smaller padding for phones */
 }
 
 .hero-text h1 {
-  font-size: clamp(2rem, 6vw, 3rem); /* smaller headings on mobile */
+  font-size: clamp(2rem, 6vw, 3rem);
 }
 
 .hero-text p.subtitle {
   font-size: clamp(1rem, 4vw, 1.2rem);
 }
 
-@media (max-width: 860px) {
-  .grid-2 {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-}
-.slides img {
-  flex: 0 0 auto;
-  width: 45%;       /* 2 images visible on phones */
-  max-width: 200px; /* optional limit */
-  height: auto;
-}
-
-@media (max-width: 480px) {
-  .slides img {
-    width: 80%;     /* 1 image visible on very small phones */
-    max-width: none;
-  }
-}
-.rsvp-form {
-  width: 100%;
-  max-width: 100%;
-  padding: 0 12px;
+#rsvp, 
+#rsvp p, 
+#rsvp h3, 
+#rsvp input, 
+#rsvp select, 
+#rsvp textarea, 
+#rsvp label {
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.05rem; /* slightly bigger than Japanese default */
+  color: #333;
 }
 
-.rsvp-form .form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/* Apply script font to Karen and Jan names everywhere */
+.accent-script,
+#rsvp .accent-script,
+header .accent-script,
+footer .accent-script {
+  font-family: "Great Vibes", cursive !important;
+  font-size: 2.4rem !important;
 }
-.btn, .btn-primary, .btn-outline {
-  width: 100%;      /* full width on phones */
-  max-width: 300px;
-  margin: 0 auto;
-  padding: 12px 0;
-}
-@media (max-width: 768px) {
-  .section, .section-alt {
-    padding: 40px 0; /* less than desktop 72px */
-  }
+
+
+/* Language dropdown uses English/German page font */
+.dropdown, 
+.dropbtn, 
+.dropdown-content li a {
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: #333;
+  font-weight: 500;
 }
