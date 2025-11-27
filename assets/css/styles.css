@@ -466,42 +466,43 @@ h2.accent {
   text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
-#gallery .slider {
-  width: 100%;
-  max-width: 1600px;      /* you can change this value */
-  margin: 0 auto;
-}
-
-
-/* Slider wrapper */
 .slider {
   width: 100%;
   overflow: hidden;
-  padding: 20px 0; /* optional spacing */
 }
 
-/* Slides container */
 .slides {
   display: flex;
-  gap: 16px;
-  flex-wrap: nowrap;
-  animation: slideLoop 20s linear infinite;
+  gap: 12px;
+  animation: scroll 25s linear infinite;
 }
 
-/* Each photo */
+/* PHOTO STYLE → keep natural ratio */
 .slides img {
-  flex: 0 0 auto;            /* prevent shrinking */
-  width: 30%;                 /* adjust number of images visible */
-  max-width: 300px;           /* optional cap */
-  height: 200px;              /* adjust as needed */
-  object-fit: cover;
-  border-radius: 12px;
+  height: auto;          /* ✨ natural ratio */
+  width: calc(50% - 12px);  /* ✨ 2 images on mobile */
+  object-fit: contain;   /* ✨ no cropping / no stretch */
+  border-radius: 8px;    /* optional */
+  display: block;
 }
 
+/* Desktop → 4 images */
+@media (min-width: 900px) {
+  .slides img {
+    width: calc(25% - 12px);
+  }
+}
 
-@keyframes slideLoop {
+/* Animation */
+@keyframes scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* duplicates needed for smooth loop */
+  100% { transform: translateX(-50%); }
+}
+
+/* Smooth infinite loop */
+@keyframes slideLoop {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* requires duplicated images */
 }
 
 
@@ -591,39 +592,50 @@ h1, h2, h3 {
   object-fit: cover;       /* cover container, crop if needed */
 }
 
-
-/* Slider wrapper */
-.slider {
+/* --- Gallery Slider --- */
+#gallery .slider {
   width: 100%;
   overflow: hidden;
-  background: var(--surface-2); /* warm tinted background */
-  padding: 12px 0; /* less padding on phones */
+  background: transparent; /* fully transparent */
+  padding: 20px 0;
 }
 
-/* Slides container */
-.slides {
+#gallery .slides {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: nowrap;
   animation: slideLoop 20s linear infinite;
 }
 
-/* Each photo */
-.slides img {
+#gallery .slides img {
   flex: 0 0 auto;
-  width: 40%;         /* smaller width on mobile */
-  max-width: 200px;   /* optional limit */
-  height: auto;
+  width: 45%;             /* mobile-friendly width */
+  max-width: 400px;       /* optional max */
+  aspect-ratio: 16 / 9;   /* maintain 16:9 */
+  object-fit: cover;      /* fill the box naturally */
   border-radius: 12px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* subtle shadow only */
 }
 
-/* Extra small phones */
-@media (max-width: 480px) {
-  .slides img {
-    width: 70%;       /* 1 photo visible at a time */
+/* Desktop: bigger photos, 4 in a row */
+@media (min-width: 900px) {
+  #gallery .slides img {
+    width: calc(25% - 16px);
     max-width: none;
   }
+}
+
+/* Extra small phones: 1 photo visible */
+@media (max-width: 480px) {
+  #gallery .slides img {
+    width: 80%;
+  }
+}
+
+/* Infinite loop animation */
+@keyframes slideLoop {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* requires duplicated images */
 }
 
 
