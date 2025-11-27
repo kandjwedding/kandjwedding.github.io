@@ -596,47 +596,46 @@ h1, h2, h3 {
 #gallery .slider {
   width: 100%;
   overflow: hidden;
-  background: transparent; /* fully transparent */
+  background: transparent;
   padding: 20px 0;
 }
 
 #gallery .slides {
   display: flex;
   gap: 16px;
-  flex-wrap: nowrap;
-  animation: slideLoop 20s linear infinite;
+  width: max-content; /* ensures full width expands correctly */
+  animation: scrollLoop 100s linear infinite;
 }
 
+/* Images */
 #gallery .slides img {
   flex: 0 0 auto;
-  width: 45%;             /* mobile-friendly width */
-  max-width: 400px;       /* optional max */
-  aspect-ratio: 16 / 9;   /* maintain 16:9 */
-  object-fit: cover;      /* fill the box naturally */
+  width: 360px;               /* base width */
+  aspect-ratio: 4 / 3;        /* fixed ratio */
+  object-fit: cover;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* subtle shadow only */
+  background: transparent;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* Desktop: bigger photos, 4 in a row */
-@media (min-width: 900px) {
+/* Responsive: smaller screens */
+@media (max-width: 900px) {
   #gallery .slides img {
-    width: calc(25% - 16px);
-    max-width: none;
+    width: 280px;
   }
 }
 
-/* Extra small phones: 1 photo visible */
-@media (max-width: 480px) {
-  #gallery .slides img {
-    width: 80%;
+/* Infinite scrolling animation */
+@keyframes scrollLoop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Move left exactly the width of the FIRST 12 images */
+    transform: translateX(-50%);
   }
 }
 
-/* Infinite loop animation */
-@keyframes slideLoop {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* requires duplicated images */
-}
 
 
 .hero-text {
