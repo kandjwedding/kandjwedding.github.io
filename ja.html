@@ -14,6 +14,51 @@
   <link rel="icon" type="image/png" href="./images/logo.png">
   <link rel="stylesheet" href="./assets/css/styles.css?v=3">
 </head>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const attending = document.getElementById('attending');
+  const mealRadios = document.querySelectorAll('input[name="食事"]');
+
+  function updateMealRequirement() {
+    if (attending.value === '出席します') {
+      mealRadios.forEach(radio => {
+        radio.required = true;
+      });
+    } else {
+      mealRadios.forEach(radio => {
+        radio.required = false;
+        radio.checked = false;
+        radio.setCustomValidity('');
+      });
+    }
+  }
+
+  // Clear custom validity on change
+  mealRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      mealRadios.forEach(r => r.setCustomValidity(''));
+    });
+  });
+
+  // Check validity on form submit
+  const form = document.querySelector('.rsvp-form');
+  form.addEventListener('submit', function (e) {
+    if (attending.value === 'Ja') {
+      const selected = Array.from(mealRadios).some(r => r.checked);
+      if (!selected) {
+        e.preventDefault();
+        mealRadios[0].setCustomValidity('お食事の希望を選択してください');
+        mealRadios[0].reportValidity();
+      }
+    }
+  });
+
+  attending.addEventListener('change', updateMealRequirement);
+  updateMealRequirement();
+});
+</script>
+
+
 <body>
   <header class="site-header" id="top">
     <nav class="nav">
@@ -107,7 +152,7 @@
     <section id="rsvp" class="section section-alt">
         <div class="container" data-anim="fade-up" data-delay="100">
             <h2 class="accent" data-anim="fade-up">出欠のご回答</h2>
-            <p><strong>2026年1月31日</strong>までにご回答ください<p>
+            <p><strong>2026年2月15日</strong>までにご回答ください<p>
 
             <form class="rsvp-form" action="https://formsubmit.co/kar_kur@icloud.com" method="POST">
             <input type="hidden" name="_subject" value="RSVP — Karen & Jan (日本語)">
@@ -117,25 +162,44 @@
             <!-- Guest 1 -->
             <div class="form-row">
                 <label for="name">お名前</label>
-                <input id="name" name="お名前" required>
+                  <input
+                    id="name"
+                    name="お名前"
+                    type="text"
+                    required
+                    oninvalid="this.setCustomValidity('お名前を入力してください')"
+                    oninput="this.setCustomValidity('')"
+                  >
             </div>
 
             <div class="form-row">
                 <label for="attending">ご出席について</label>
-                <select id="attending" name="出席" required>
-                <option value="">選択してください</option>
-                <option value="出席します">出席します</option>
-                <option value="欠席します">欠席します</option>
+                <select
+                  id="attending"
+                  name="出席"
+                  required
+                  oninvalid="this.setCustomValidity('ご出席について選択してください')"
+                  onchange="this.setCustomValidity('')"
+                >
+                  <option value="">選択してください</option>
+                  <option value="出席します">出席します</option>
+                  <option value="欠席します">欠席します</option>
                 </select>
             </div>
 
-            <div class="form-row">
-                <label>お食事の希望</label>
-                <div>
-                <label><input type="radio" name="食事" value="肉料理"> 肉料理</label>
+            <div class="form-row" id="meal-section">
+              <label>お食事の希望</label>
+              <div>
+                <label>
+                  <input type="radio" name="食事" value="肉料理" id="meal-meat">
+                  肉料理
+                </label>
                 &nbsp;&nbsp;
-                <label><input type="radio" name="食事" value="ベジタリアン"> ベジタリアン</label>
-                </div>
+                <label>
+                  <input type="radio" name="食事" value="ベジタリアン">
+                  ベジタリアン
+                </label>
+              </div>
             </div>
 
             <div class="form-row">
@@ -180,7 +244,6 @@
             </div>
 
             <button class="btn btn-primary" type="submit">送信する</button>
-
         </section>
 
         <section id="gallery" class="section">

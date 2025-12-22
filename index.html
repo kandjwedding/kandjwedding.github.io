@@ -13,6 +13,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const attending = document.getElementById('attending');
+  const mealRadios = document.querySelectorAll('input[name="Meal"]');
+
+  function updateMealRequirement() {
+    if (attending.value === 'Yes') {
+      mealRadios.forEach(radio => {
+        radio.required = true;
+      });
+    } else {
+      mealRadios.forEach(radio => {
+        radio.required = false;
+        radio.checked = false;
+        radio.setCustomValidity('');
+      });
+    }
+  }
+  mealRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      mealRadios.forEach(r => r.setCustomValidity(''));
+    });
+  });
+  const form = document.querySelector('.rsvp-form');
+  form.addEventListener('submit', function (e) {
+    if (attending.value === 'Ja') {
+      const selected = Array.from(mealRadios).some(r => r.checked);
+      if (!selected) {
+        e.preventDefault();
+        mealRadios[0].setCustomValidity('Bitte wählen Sie eine Essensoption');
+        mealRadios[0].reportValidity();
+      }
+    }
+  });
+  attending.addEventListener('change', updateMealRequirement);
+  updateMealRequirement();
+});
+</script>
+
+
 <body>
   <header class="site-header" id="top">
     <nav class="nav">
@@ -59,10 +99,8 @@
             <p><strong>Time:</strong> 15:30</p>
             <p><strong>Location:</strong> Klosterkirche St. Marien</p>
             <p><strong>Address:</strong> Klosterpl. 6, 27711 Osterholz-Scharmbeck</p>
-            <p>All invited guests are welcome inside the church. Please arrive a little early to be seated.</p>
             <p><a class="map-link" target="_blank" rel="noopener"
                   href="https://www.google.com/maps/search/?api=1&query=Klosterkirche+St.+Marien,+Klosterpl.+6,+27711+Osterholz-Scharmbeck">Open in Google Maps ↗</a></p>
-                    <p>All invited guests are welcome inside the church. Please arrive a little early to be seated.</p>
         </div>
 
         <div class="card" data-anim="fade-up" data-delay="100">
@@ -71,7 +109,7 @@
             <p><strong>Time:</strong> 18:00</p>
             <p><strong>Location:</strong> Deck 20 &amp; Riva Clubraum</p>
             <p><strong>Address:</strong> Konsul-Smidt-Straße 88, 28217 Bremen</p>
-            <p>Please come to Deck 20 first for welcome drinks</p>
+            <p>Please join us at Deck 20 for welcome drinks!</p>
             <p><a class="map-link" target="_blank" rel="noopener"
                   href="https://www.google.com/maps/search/?api=1&query=Deck+20,+Konsul-Smidt-Stra%C3%9Fe+88,+28217+Bremen">Open in Google Maps ↗</a></p>
         </div>
@@ -118,7 +156,7 @@
           <div class="form-row">
             <label>Meal Preference</label>
             <div>
-              <label><input type="radio" name="Meal" value="Fleisch"> Meat</label>
+              <label><input type="radio" name="Meal" value="Fleisch" id="meal-meat"> Meat</label>
               &nbsp;&nbsp;
               <label><input type="radio" name="Meal" value="Vegetarisch"> Vegetarian</label>
             </div>
