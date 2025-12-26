@@ -398,6 +398,16 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--primary); outl
   margin-bottom: 2rem;
 }
 
+/* === RSVP buttons consistent font per language === */
+#rsvp .btn,
+#rsvp .btn-primary,
+#rsvp .btn-outline {
+  font-family: inherit;     /* inherit from #rsvp */
+  font-weight: 600;
+  font-size: 1.05rem;       /* match RSVP form inputs */
+  text-align: center;
+}
+
 /* Animation effect for smooth fade + slide-up */
 @keyframes fadeUpElegant {
   0% {
@@ -674,12 +684,40 @@ footer .accent-script {
   font-size: 2.4rem !important;
 }
 
-
-/* Language dropdown uses English/German page font */
 .dropdown, 
 .dropbtn, 
 .dropdown-content li a {
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans JP", "Kosugi Maru", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   color: #333;
   font-weight: 500;
+}
+
+#rsvp .rsvp-form {
+  width: 100%;
+  max-width: 680px;         /* keeps form readable */
+}
+
+/* Navbar and dropdown: force consistent font across all pages */
+.nav,
+.nav a,
+.nav .logo,
+.nav .dropbtn,
+.nav .dropdown-content li a {
+  font-family: "Noto Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Center the RSVP form */
+#rsvp .container {
+  display: flex;
+  justify-content: center;  /* horizontal centering */
+  align-items: center;      /* vertical centering if container has height */
+  flex-direction: column;   /* stack heading + form */
+  min-height: 100%;         /* optional: ensures vertical centering works */
+}
+
+#rsvp .rsvp-form {
+  width: 100%;
+  max-width: 680px;         /* keeps form readable */
 }
