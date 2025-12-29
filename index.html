@@ -132,81 +132,125 @@ document.addEventListener('DOMContentLoaded', function () {
     <section id="rsvp" class="section section-alt">
       <div class="container" data-anim="fade-up" data-delay="100">
         <h2 class="accent" data-anim="fade-up">RSVP</h2>
-        <p>Please respond by <strong>15.02.2026</strong></p>
+        <p>Please respond by <strong>February 15th, 2026</strong></p>
 
-        <form class="rsvp-form" action="https://formsubmit.co/karenkuri0419@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="RSVP — Karen & Jan">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-
-          <h3>Your Information</h3>
+        <!-- Formspree form -->
+        <form class="rsvp-form" action="https://formspree.io/f/xaqyanzb" method="POST">
+          <!-- Guest 1 -->
           <div class="form-row">
             <label for="name">Full Name</label>
-            <input id="name" name="Guest Name" required>
+            <input
+              id="name"
+              name="guest_name"
+              type="text"
+              required
+              oninvalid="this.setCustomValidity('Please enter your full name')"
+              oninput="this.setCustomValidity('')"
+            >
           </div>
 
           <div class="form-row">
             <label for="attending">Will you attend?</label>
-            <select id="attending" name="Attending" required>
+            <select
+              id="attending"
+              name="attending"
+              required
+              oninvalid="this.setCustomValidity('Please select your attendance')"
+              onchange="this.setCustomValidity('')"
+            >
               <option value="">Please select</option>
-              <option value="Yes">Yes, I’ll be there!</option>
-              <option value="No">Sorry, I can’t make it</option>
+              <option value="attend">Yes, I’ll be there!</option>
+              <option value="absent">Sorry, I can’t make it</option>
             </select>
           </div>
 
-          <div class="form-row">
+          <div class="form-row" id="meal-section">
             <label>Meal Preference</label>
             <div>
-              <label><input type="radio" name="Meal" value="Fleisch" id="meal-meat"> Meat</label>
+              <label><input type="radio" name="meal" value="meat"> Meat</label>
               &nbsp;&nbsp;
-              <label><input type="radio" name="Meal" value="Vegetarisch"> Vegetarian</label>
+              <label><input type="radio" name="meal" value="vegetarian"> Vegetarian</label>
             </div>
           </div>
 
           <div class="form-row">
             <label for="allergies">Food Allergies</label>
-            <input id="allergies" name="Allergies" placeholder="e.g., nut allergy">
+            <input id="allergies" name="allergies" placeholder="e.g., nut allergy">
           </div>
 
+          <!-- Plus-One -->
           <div class="form-row">
             <label for="plusone">Will you bring a plus-one?</label>
-            <select id="plusone" name="Plus-One">
-              <option value="No">No</option>
-              <option value="Yes">Yes</option>
+            <select id="plusone" name="plus_one">
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
             </select>
           </div>
 
           <div id="plusone-section" style="display:none; margin-top:1rem;">
             <h3>Plus-One Details</h3>
+
             <div class="form-row">
               <label for="plusname">Full Name for Plus-One</label>
-              <input id="plusname" name="Plus-One Name">
+              <input id="plusname" name="plus_name">
             </div>
 
             <div class="form-row">
               <label>Meal Preference for Plus-One</label>
               <div>
-                <label><input type="radio" name="Plus-One Meal" value="Fleisch"> Meat</label>
+                <label><input type="radio" name="plus_meal" value="meat"> Meat</label>
                 &nbsp;&nbsp;
-                <label><input type="radio" name="Plus-One Meal" value="Vegetarisch"> Vegetarian</label>
+                <label><input type="radio" name="plus_meal" value="vegetarian"> Vegetarian</label>
               </div>
             </div>
 
             <div class="form-row">
-              <label for="plusallergies">Food allergies for Plus-One</label>
-              <input id="plusallergies" name="Plus-One Allergies" placeholder="e.g., nut allergy">
+              <label for="plusallergies">Food Allergies for Plus-One</label>
+              <input id="plusallergies" name="plus_allergies" placeholder="e.g., nut allergy">
             </div>
           </div>
 
           <div class="form-row">
             <label for="message">Message to Karen & Jan</label>
-            <textarea id="message" name="Message" rows="3" placeholder="Write us a note…"></textarea>
+            <textarea id="message" name="message" rows="3" placeholder="Write us a note…"></textarea>
           </div>
 
-          <button class="btn btn-primary" type="submit">Send RSVP</button>        
+          <button class="btn btn-primary" type="submit">Send RSVP</button>
         </form>
       </div>
     </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Plus-One toggle
+        const plusOneSelect = document.getElementById("plusone");
+        const plusOneSection = document.getElementById("plusone-section");
+
+        plusOneSelect.addEventListener("change", function () {
+          plusOneSection.style.display = this.value === "yes" ? "block" : "none";
+        });
+
+        // Meal requirement only when attending
+        const attending = document.getElementById('attending');
+        const mealRadios = document.querySelectorAll('input[name="meal"]');
+
+        function updateMealRequirement() {
+          if (attending.value === 'attend') {
+            mealRadios.forEach(r => r.required = true);
+          } else {
+            mealRadios.forEach(r => {
+              r.required = false;
+              r.checked = false;
+              r.setCustomValidity('');
+            });
+          }
+        }
+
+        attending.addEventListener('change', updateMealRequirement);
+        updateMealRequirement();
+      });
+    </script>
+
 
         <section id="gallery" class="section">
           <div class="container">

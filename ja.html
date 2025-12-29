@@ -151,101 +151,128 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       </script>
 
-    <!-- RSVP -->
-    <section id="rsvp" class="section section-alt">
-      <div class="container" data-anim="fade-up" data-delay="100">
-        <h2 class="accent" data-anim="fade-up">出欠のご回答</h2>
-        <p><strong>2026年2月15日</strong>までにご回答ください<p>
+<section id="rsvp" class="section section-alt">
+  <div class="container" data-anim="fade-up" data-delay="100">
+    <h2 class="accent" data-anim="fade-up">出欠のご回答</h2>
+    <p><strong>2026年2月15日</strong>までにご回答ください</p>
 
-        <form class="rsvp-form" action="https://formsubmit.co/karenkuri0419@gmail.com" method="POST">
-          <!-- 件名は英語 -->
-          <input type="hidden" name="_subject" value="RSVP — Karen & Jan">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-
-          <!-- Guest 1 -->
-          <div class="form-row">
-            <label for="name">お名前</label>
-            <input
-              id="name"
-              name="guest_name"
-              type="text"
-              required
-              oninvalid="this.setCustomValidity('お名前を入力してください')"
-              oninput="this.setCustomValidity('')"
-            >
-          </div>
-
-          <div class="form-row">
-            <label for="attending">ご出席について</label>
-            <select
-              id="attending"
-              name="attending"
-              required
-              oninvalid="this.setCustomValidity('ご出席について選択してください')"
-              onchange="this.setCustomValidity('')"
-            >
-              <option value="">選択してください</option>
-              <option value="attend">出席します</option>
-              <option value="absent">欠席します</option>
-            </select>
-          </div>
-
-          <div class="form-row" id="meal-section">
-            <label>お食事の希望</label>
-            <div>
-              <label><input type="radio" name="meal" value="meat"> 肉料理</label>
-              &nbsp;&nbsp;
-              <label><input type="radio" name="meal" value="vegetarian"> ベジタリアン</label>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <label for="allergies">アレルギー</label>
-            <input id="allergies" name="allergies" placeholder="例：ナッツアレルギーなどございましたらご記入ください">
-          </div>
-
-          <!-- Plus-One -->
-          <div class="form-row">
-            <label for="plusone">ご同伴者様はいますか？</label>
-            <select id="plusone" name="plusone">
-              <option value="no">いいえ</option>
-              <option value="yes">はい</option>
-            </select>
-          </div>
-
-          <div id="plusone-section" style="display:none; margin-top:1rem;">
-            <h3>ご同伴者様のご情報</h3>
-
-            <div class="form-row">
-              <label for="plusname">ご同伴者様のお名前</label>
-              <input id="plusname" name="plus_name">
-            </div>
-
-            <div class="form-row">
-              <label>ご同伴者様のお食事の希望</label>
-              <div>
-                <label><input type="radio" name="plus_meal" value="meat"> 肉料理</label>
-                &nbsp;&nbsp;
-                <label><input type="radio" name="plus_meal" value="vegan"> ベジタリアン</label>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <label for="plusallergies">ご同伴者様のアレルギー</label>
-              <input id="plusallergies" name="plus_allergies" placeholder="例：ナッツアレルギーなどございましたらご記入ください">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <label for="message">メッセージ</label>
-            <textarea id="message" name="message" rows="3" placeholder="メッセージがあればご記入ください"></textarea>
-          </div>
-
-          <button class="btn btn-primary" type="submit">送信する</button>
-        </form>
+    <!-- Formspree form -->
+    <form class="rsvp-form" action="https://formspree.io/f/mojqyvko" method="POST">
+      <!-- Guest 1 -->
+      <div class="form-row">
+        <label for="name">お名前</label>
+        <input
+          id="name"
+          name="guest_name"
+          type="text"
+          required
+          oninvalid="this.setCustomValidity('お名前を入力してください')"
+          oninput="this.setCustomValidity('')"
+        >
       </div>
-    </section>
+
+      <div class="form-row">
+        <label for="attending">ご出席について</label>
+        <select
+          id="attending"
+          name="attending"
+          required
+          oninvalid="this.setCustomValidity('ご出席について選択してください')"
+          onchange="this.setCustomValidity('')"
+        >
+          <option value="">選択してください</option>
+          <option value="attend">出席します</option>
+          <option value="absent">欠席します</option>
+        </select>
+      </div>
+
+      <div class="form-row" id="meal-section">
+        <label>お食事の希望</label>
+        <div>
+          <label><input type="radio" name="meal" value="meat"> 肉料理</label>
+          &nbsp;&nbsp;
+          <label><input type="radio" name="meal" value="veg"> ベジタリアン</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="allergies">アレルギー</label>
+        <input id="allergies" name="allergies" placeholder="例：ナッツアレルギーなどございましたらご記入ください">
+      </div>
+
+      <!-- Plus-One -->
+      <div class="form-row">
+        <label for="plusone">ご同伴者様はいますか？</label>
+        <select id="plusone" name="plus_one">
+          <option value="no">いいえ</option>
+          <option value="yes">はい</option>
+        </select>
+      </div>
+
+      <div id="plusone-section" style="display:none; margin-top:1rem;">
+        <h3>ご同伴者様のご情報</h3>
+
+        <div class="form-row">
+          <label for="plusname">ご同伴者様のお名前</label>
+          <input id="plusname" name="plus_name">
+        </div>
+
+        <div class="form-row">
+          <label>ご同伴者様のお食事の希望</label>
+          <div>
+            <label><input type="radio" name="plus_meal" value="meat"> 肉料理</label>
+            &nbsp;&nbsp;
+            <label><input type="radio" name="plus_meal" value="veg"> ベジタリアン</label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="plusallergies">ご同伴者様のアレルギー</label>
+          <input id="plusallergies" name="plus_allergies" placeholder="例：ナッツアレルギーなどございましたらご記入ください">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="message">メッセージ</label>
+        <textarea id="message" name="message" rows="3" placeholder="メッセージがあればご記入ください"></textarea>
+      </div>
+
+      <button class="btn btn-primary" type="submit">送信する</button>
+    </form>
+  </div>
+</section>
+
+<script>
+  // Plus-One toggle
+  document.addEventListener("DOMContentLoaded", function () {
+    const plusOneSelect = document.getElementById("plusone");
+    const plusOneSection = document.getElementById("plusone-section");
+
+    plusOneSelect.addEventListener("change", function () {
+      plusOneSection.style.display = this.value === "yes" ? "block" : "none";
+    });
+
+    // Meal requirement only when attending
+    const attending = document.getElementById('attending');
+    const mealRadios = document.querySelectorAll('input[name="meal"]');
+
+    function updateMealRequirement() {
+      if (attending.value === 'attend') {
+        mealRadios.forEach(r => r.required = true);
+      } else {
+        mealRadios.forEach(r => {
+          r.required = false;
+          r.checked = false;
+          r.setCustomValidity('');
+        });
+      }
+    }
+
+    attending.addEventListener('change', updateMealRequirement);
+    updateMealRequirement();
+  });
+</script>
+
         <section id="gallery" class="section">
           <div class="container">
             <div class="slider">
