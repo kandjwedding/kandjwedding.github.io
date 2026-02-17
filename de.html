@@ -6,8 +6,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Great+Vibes&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Karen & Jan — 結婚式 & RSVP</title>
-  <meta name="description" content="結婚式のご案内と出欠 RSVP">
+  <title>Karen & Jan — Wedding </title>
+  <meta name="description" content="Wedding info">
   <link rel="alternate" hreflang="en" href="./index.html">
   <link rel="alternate" hreflang="de" href="./de.html">
   <link rel="alternate" hreflang="ja" href="./ja.html">
@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', function () {
       </picture>
       <div class="hero-text parallax">
         <h1>Karen & Jan</h1>
-        <p class="subtitle">Zur Feier unserer Hochzeit — 20. März 2026</p>
-        <a href="#rsvp" class="btn btn-primary">Jetzt Zusagen</a>
+        <p class="subtitle">Wir freuen uns darauf, alle am 20. März 2026 zu sehen!</p>
+        <!-- <a href="#rsvp" class="btn btn-primary">Jetzt Zusagen</a>-->
       </div>
     </div>
     <!-- Favicon for browser tab -->
@@ -131,14 +131,44 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </section>
 
+    <section id="gift" class="section">
+      <div class="container" data-anim="fade-up" data-delay="100">
+        <h2 class="accent" data-anim="fade-up">Geschenke & Fotos</h2>
+        <p>Eure Anwesenheit ist das größte Geschenk für uns! ❤️</p>
+        
+        <p>Wenn ihr uns etwas schenken möchtet, bevorzugen wir Geldgeschenke. Für eure Bequemlichkeit könnt ihr auch über PayPal schenken:</p>
+        <p>
+          <a href="https://paypal.me/karkur0419" target="_blank" style="color: #c1121f; font-weight: bold;">
+            Geschenk per PayPal senden ↗
+          </a>
+        </p>
+
+        <p>Wir würden uns freuen, eure Hochzeitsfotos und -videos zu sehen! Ihr könnt sie hier hochladen:</p>
+        <p>
+          <a href="https://www.dropbox.com/request/a6kaOATwJekAJfw9H6dk" target="_blank" style="color: #c1121f; font-weight: bold;">
+            Fotos hochladen ↗
+          </a>
+        </p>
+
+        <p>Vielen Dank für eure Liebe und Großzügigkeit!</p>
+      </div>
+    </section>
+
+
     <!-- RSVP -->
+     <section id="rsvp" class="section section-alt">
+      <div class="container" data-anim="fade-up" data-delay="100">
+        <h2 class="accent" data-anim="fade-up">RSVP</h2>
+        <p>Die RSVP-Frist ist abgelaufen. Wir freuen uns darauf, alle am 20. März 2026 zu sehen!</p>
+      </div>
+    </section>
+  <!--
     <section id="rsvp" class="section section-alt">
       <div class="container">
         <h2 class="accent">Rückmeldung</h2>
         <p>Bitte antwortet bis zum <strong>15.02.2026</strong></p>
 
         <form class="rsvp-form" action="https://formspree.io/f/mqekwand" method="POST">
-          <!-- Guest 1 -->
           <h3>Deine Informationen</h3>
           <div class="form-row">
             <label for="name">Vollständiger Name</label>
@@ -167,7 +197,6 @@ document.addEventListener('DOMContentLoaded', function () {
             <input id="allergies" name="Allergien" placeholder="z. B. Nussallergie">
           </div>
 
-          <!-- Plus-One -->
           <div class="form-row">
             <label for="plusone">Bringst du eine Begleitperson mit?</label>
             <select id="plusone" name="Begleitperson">
@@ -204,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           <button class="btn btn-primary" type="submit">Antwort senden</button>
         </form>
-      </div>
+      </div>-->
     </section>
 
     <script>

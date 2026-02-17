@@ -82,8 +82,10 @@ document.addEventListener('DOMContentLoaded', function () {
       </picture>
       <div class="hero-text parallax">
         <h1>Karen & Jan</h1>
-        <p class="subtitle">Save the Date — March 20th, 2026</p>
-        <a href="#rsvp" class="btn btn-primary">RSVP Now</a>
+        <p class="subtitle">We’re looking forward to seeing everyone on March 20th, 2026!</p>
+        <!--<p class="subtitle">Save the Date — March 20th, 2026</p>
+        <a href="#rsvp" class="btn btn-primary">RSVP Now</a>-->
+
       </div>
     </div>
   </header>
@@ -119,24 +121,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- DRESS CODE -->
     <section id="dresscode" class="section">
-      <div class="container">
+      <div class="container" data-anim="fade-up" data-delay="100">
         <h2 class="accent" data-anim="fade-up">Dress Code</h2>
-        <div class="card" data-anim="fade-up" data-delay="100">
           <p><strong>Semi-formal</strong></p>
           <p>Guests may wear dresses or jumpsuits, or a suit/shirt with dress pants. Kindly refrain from wearing white or black.</p>
-        </div>
       </div>
     </section>
 
-    <!-- RSVP -->
+    <section id="gift" class="section">
+      <div class="container" data-anim="fade-up" data-delay="100">
+        <h2 class="accent" data-anim="fade-up">Gifts & Photos</h2>
+        <p>Your presence is the greatest gift to us! ❤️</p>
+        <p>If you’d like to give something, we prefer cash. For convenience, PayPal contributions are welcome here:</p>
+        <p>
+          <a href="https://paypal.me/karkur0419" target="_blank" style="color: #c1121f; font-weight: bold;">
+            Send a gift via PayPal ↗
+          </a>
+        </p>
+        <p>We’d love to see your wedding photos and videos! You can upload them here:</p>
+        <p>
+          <a href="https://www.dropbox.com/request/a6kaOATwJekAJfw9H6dk" target="_blank" style="color: #c1121f; font-weight: bold;">
+            Upload your photos ↗
+          </a>
+        </p>
+        <p>Thank you so much for your generosity and love!</p>
+      </div>
+    </section>
+
+
+
+<section id="rsvp" class="section section-alt">
+  <div class="container" data-anim="fade-up" data-delay="100">
+    <h2 class="accent" data-anim="fade-up">RSVP</h2>
+    <p>The RSVP deadline has passed. We’re looking forward to seeing everyone on March 20th, 2026!</p>
+  </div>
+</section>
+
+<!--
     <section id="rsvp" class="section section-alt">
       <div class="container" data-anim="fade-up" data-delay="100">
         <h2 class="accent" data-anim="fade-up">RSVP</h2>
         <p>Please respond by <strong>February 15th, 2026</strong></p>
 
         <!-- Formspree form -->
+        <!--
         <form class="rsvp-form" action="https://formspree.io/f/xaqyanzb" method="POST">
-          <!-- Guest 1 -->
           <div class="form-row">
             <label for="name">Full Name</label>
             <input
@@ -178,7 +207,6 @@ document.addEventListener('DOMContentLoaded', function () {
             <input id="allergies" name="allergies" placeholder="e.g., nut allergy">
           </div>
 
-          <!-- Plus-One -->
           <div class="form-row">
             <label for="plusone">Will you bring a plus-one?</label>
             <select id="plusone" name="plus_one">
@@ -218,6 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <button class="btn btn-primary" type="submit">Send RSVP</button>
         </form>
       </div>
+-->
     </section>
 
     <script>
